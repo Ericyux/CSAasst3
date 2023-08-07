@@ -14,6 +14,27 @@ public class Spaceship extends Actor
      */
     public void act()
     {
-        // Add your action code here.
+        if (Greenfoot.isKeyDown("right")) {
+            setLocation(getX() + 5, getY());
+        }
+        
+        if (Greenfoot.isKeyDown("left")) {
+            setLocation(getX() - 5, getY());
+        }
+        
+        if (Greenfoot.isKeyDown("up")) {
+            setLocation(getX(), getY()-5);
+        }
+        
+        if (Greenfoot.isKeyDown("down")) {
+            setLocation(getX(), getY()+5);
+        }
+    }
+    
+    public Spaceship(){
+        GreenfootImage image = getImage();
+        image.scale(50,50);
+        setImage(image);
+        act();
     }
 }

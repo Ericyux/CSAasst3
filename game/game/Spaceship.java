@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class Spaceship here.
  * 
@@ -8,12 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Spaceship extends Actor
 {
-    int count = 1;
+    public static ArrayList<Bullet> bullets = new ArrayList<Bullet>();
     public void act()
     {
         move();
         shoot();
-        reload();
+        //reload();
     }
     
     public Spaceship(){
@@ -42,16 +42,13 @@ public class Spaceship extends Actor
         }
     }
     public void shoot(){
-        if (Greenfoot.isKeyDown("space") && count == 1){
-            Bullet b = new Bullet();
-            getWorld().addObject(b, getX(), getY()-10);
-            count = 0;
-        }
-    }
-    
-    public void reload(){
-        if (count < 1){
-            count++;
+        if (Greenfoot.isKeyDown("space")){
+            if (bullets.size() <= 0 || 
+            bullets.get(bullets.size() - 1).getY() <= this.getY() - 50) {
+                Bullet b = new Bullet();
+                getWorld().addObject(b, getX(), getY()-10);
+                bullets.add(b);
+            }
         }
     }
 }

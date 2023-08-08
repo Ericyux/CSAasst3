@@ -21,7 +21,7 @@ public class MyWorld extends World
     }
     private void prepare(){
         Spaceship spaceship = new Spaceship();
-        addObject(spaceship, 200, 200);
-        spaceship.setLocation(200, 200);
+        addObject(spaceship, 200, 500);
+        //spaceship.setLocation(200, 200);
     }
 }

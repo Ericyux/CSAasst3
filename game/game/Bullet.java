@@ -22,6 +22,10 @@ public class Bullet extends Actor
     
     public void moveBullet(){
         move(speed);
+        if (this.getY() <= 0) {
+            Spaceship.bullets.remove(this);
+            setImage((GreenfootImage)null);
+        }
     }
     
     public void checkHit(){
@@ -45,7 +49,7 @@ public class Bullet extends Actor
             removeTouching(TrigAlien.class);
             getWorld().removeObject(this);
         }
-        }
+    }
         
         
     }

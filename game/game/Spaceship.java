@@ -8,12 +8,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Spaceship extends Actor
 {
-    /**
-     * Act - do whatever the Spaceship wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    int count = 1;
     public void act()
     {
+        move();
+        shoot();
+        reload();
+    }
+    
+    public Spaceship(){
+        GreenfootImage image = getImage();
+        image.scale(50,50);
+        setImage(image);
+        act();
+    }
+    
+    
+    public void move(){
         if (Greenfoot.isKeyDown("right")) {
             setLocation(getX() + 5, getY());
         }
@@ -30,11 +41,17 @@ public class Spaceship extends Actor
             setLocation(getX(), getY()+5);
         }
     }
+    public void shoot(){
+        if (Greenfoot.isKeyDown("space") && count == 1){
+            Bullet b = new Bullet();
+            getWorld().addObject(b, getX(), getY()-10);
+            count = 0;
+        }
+    }
     
-    public Spaceship(){
-        GreenfootImage image = getImage();
-        image.scale(50,50);
-        setImage(image);
-        act();
+    public void reload(){
+        if (count < 1){
+            count++;
+        }
     }
 }

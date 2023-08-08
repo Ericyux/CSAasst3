@@ -1,19 +1,43 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class Alien here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Alien extends Actor
-{
-    /**
-     * Act - do whatever the Alien wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
+public class Alien extends Actor {
+    private int speed = 1;
+    private int direction = 1;
+
+    public Alien() {
+        GreenfootImage alienImage = new GreenfootImage("defaultAlien.png");
+        alienImage.scale(alienImage.getWidth() / 20, alienImage.getHeight() / 20);
+        setImage(alienImage);
+    }
+
+    public void act() {
+        moveAlien();
+        checkEdge();
+    }
+
+    private void moveAlien() {
+        setLocation(getX() + speed * direction, getY());
+    }
+    
+    private void flipDirection() {
+        direction *= -1;
+    }
+
+    private void checkEdge() {
+        if (getX() <= 0 || getX() >= getWorld().getWidth() - 1) {
+            moveAllAliensDown();
+        }
+    }
+
+    private void moveAllAliensDown() {
+        for (Object obj : getWorld().getObjects(Alien.class)) {
+            Alien alien = (Alien) obj;
+            alien.setLocation(alien.getX(), alien.getY() + getImage().getHeight());
+            alien.flipDirection();
+        }
+    }
+
+    public void disappear() {
+        getWorld().removeObject(this);
     }
 }

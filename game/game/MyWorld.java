@@ -19,9 +19,20 @@ public class MyWorld extends World
         super(400, 600, 1); 
         prepare();
     }
-    private void prepare(){
+    private void prepare() {
         Spaceship spaceship = new Spaceship();
         addObject(spaceship, 200, 500);
-        //spaceship.setLocation(200, 200);
+        
+        int rows = 4;
+        int cols = 5;
+        int spacingX = 50;
+        int spacingY = 40;
+                
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                Alien alien = new Alien();
+                addObject(alien, spacingX * col + spacingX / 2, spacingY * row + spacingY / 2);
+            }
+        }
     }
 }

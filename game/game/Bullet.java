@@ -29,8 +29,9 @@ public class Bullet extends Actor
     }
     
     public void checkHit(){
-        if(isTouching(AlgebraAlien.class)){
-            removeTouching(AlgebraAlien.class);
+        if(isTouching(Alien.class)){
+            removeTouching(Alien.class);
+            Spaceship.bullets.remove(this);
             getWorld().removeObject(this);
         }
         else if(isTouching(CalculusAlien.class)){

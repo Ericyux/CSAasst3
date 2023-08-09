@@ -9,4 +9,6 @@ comment3.params=
 comment3.target=void\ moveBullet()
 comment4.params=
 comment4.target=void\ checkHit()
-numComments=5
+comment5.params=
+comment5.target=void\ showScore()
+numComments=6

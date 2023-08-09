@@ -9,10 +9,16 @@ import java.util.*;
 public class Spaceship extends Actor
 {
     public static ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+    private int time = 30;
+    private int originalTime = 30;
     public void act()
     {
         move();
         shoot();
+        MyWorld myWorld = (MyWorld) getWorld();
+        if (Greenfoot.getRandomNumber(2000) == 0){
+            myWorld.prepareAliens();
+        }
         //reload();
     }
     

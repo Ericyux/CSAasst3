@@ -8,12 +8,26 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Superpower extends Actor
 {
-    /**
-     * Act - do whatever the Superpower wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private int dropSpeed = 2;
+    private boolean onBottom = false;
     public void act()
     {
-        // Add your action code here.
+        fall();
+    }
+    public void fall()
+    {
+        if (!onBottom) {
+            setLocation(getX(), getY() + dropSpeed);
+            onBottom = checkBottom();
+        }
+    }
+    public boolean checkBottom()
+    {
+        if (getY() > 570) {
+            getWorld().removeObject(this);
+            return false;
+        } else {
+            return false;
+        }
     }
 }

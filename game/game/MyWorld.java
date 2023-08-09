@@ -19,6 +19,7 @@ public class MyWorld extends World
         super(400, 600, 1); 
         prepare();
     }
+    
     private void prepare() {
         Spaceship spaceship = new Spaceship();
         addObject(spaceship, 200, 500);
@@ -61,6 +62,31 @@ public class MyWorld extends World
             }
         }
     }
+    public void dropAgilityPower() {
+        Agility s = new Agility();
+        addObject(s,50+Greenfoot.getRandomNumber(getWidth()-100), 10);
+    }
+    public void dropInvincibilityPower() {
+        Invincibility sa = new Invincibility();
+        addObject(sa,50+Greenfoot.getRandomNumber(getWidth()-100), 10);
+    }
+    public void dropMissilePower() {
+        AmmoExtra sa = new AmmoExtra();
+        addObject(sa,50+Greenfoot.getRandomNumber(getWidth()-100), 10);
+    }
     
-    
+    public void act() {
+        if (Greenfoot.getRandomNumber(30) == 25) {
+        
+            if (Greenfoot.getRandomNumber(3) == 0){
+                    dropAgilityPower();
+            }
+            else if (Greenfoot.getRandomNumber(3) == 1){
+                    dropInvincibilityPower();
+            }
+            else if (Greenfoot.getRandomNumber(3) == 2){
+                    dropMissilePower();
+            }
+        }
+    }
 }

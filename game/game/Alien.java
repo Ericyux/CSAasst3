@@ -11,6 +11,7 @@ public class Alien extends Actor {
     }
 
     public void act() {
+        checkCollisionWithSpaceship();
         moveAlien();
         checkEdge();
     }
@@ -37,7 +38,10 @@ public class Alien extends Actor {
         }
     }
 
-    public void disappear() {
-        getWorld().removeObject(this);
+    private void checkCollisionWithSpaceship() {
+        if (isTouching(Spaceship.class)) {
+            System.out.println("Collided with spaceship - game over!");
+            Greenfoot.stop(); // End the simulation
+        }
     }
 }

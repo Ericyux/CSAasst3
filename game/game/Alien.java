@@ -3,7 +3,6 @@ import greenfoot.*;
 public class Alien extends Actor {
     private int speed = 1;
     private int direction = 1;
-
     public Alien() {
         GreenfootImage alienImage = new GreenfootImage("defaultAlien.png");
         alienImage.scale(alienImage.getWidth() / 20, alienImage.getHeight() / 20);
@@ -40,8 +39,10 @@ public class Alien extends Actor {
 
     private void checkCollisionWithSpaceship() {
         if (isTouching(Spaceship.class)) {
-            System.out.println("Collided with spaceship - game over!");
+            getWorld().showText("Collided with spaceship - game over!", 200, 200);
             Greenfoot.stop(); // End the simulation
         }
     }
+    
+    
 }

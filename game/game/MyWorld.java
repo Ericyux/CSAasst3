@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -22,13 +22,15 @@ public class MyWorld extends World
     private void prepare() {
         Spaceship spaceship = new Spaceship();
         addObject(spaceship, 200, 500);
-        
+        prepareAliens();
+    }
+    
+    public void prepareAliens(){
         int rows = 4;
         int cols = 5;
         int spacingX = 50;
         int spacingY = 40;
-                
-            
+        
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 Alien alien;
@@ -59,4 +61,6 @@ public class MyWorld extends World
             }
         }
     }
+    
+    
 }

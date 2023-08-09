@@ -33,29 +33,31 @@ public class Bullet extends Actor
 public void checkHit() {
     if (isTouching(Alien.class)) {
         Alien alien = (Alien) getOneIntersectingObject(Alien.class); //https://www.greenfoot.org/topics/55648/0
-        
         if (alien instanceof CalculusAlien) {
-            //System.out.println("CalculusAlien hit!"); // For Raman: replace the print statements by prompting the user to answer a question
-            removeTouching(CalculusAlien.class);
-            score += 5;
+            if (answerCorrectly("calc")){
+                removeTouching(CalculusAlien.class);
+                score += 5;
+            }
         } else if (alien instanceof GeoAlien) {
-            //System.out.println("GeoAlien hit!");
-            removeTouching(GeoAlien.class);
-            score += 5;
+            if (answerCorrectly("geo")){
+                removeTouching(GeoAlien.class);
+                score += 5;
+            }
         } else if (alien instanceof TrigAlien) {
-            //System.out.println("TrigAlien hit!");
-            removeTouching(TrigAlien.class);
-            score += 5;
+            if (answerCorrectly("trig")){
+                removeTouching(TrigAlien.class);
+                score += 5;
+            }
         } else if (alien instanceof AlgebraAlien) {
-            //System.out.println("AlgebraAlien hit!");
-            removeTouching(AlgebraAlien.class);
-            score += 5;
+            if (answerCorrectly("alg")){
+                removeTouching(AlgebraAlien.class);
+                score += 5;
+            }
         } else {
             //System.out.println("Alien hit!");
             removeTouching(Alien.class);
             score += 5;
         }
-        
         Spaceship.bullets.remove(this);
         getWorld().removeObject(this);
     }
@@ -65,7 +67,15 @@ public void showScore(){
     getWorld().showText("Your high score is " + score, 0, 100);
 }
 
-
+public boolean answerCorrectly(String subject) {
+    String[] question = Question.getRandomQuestion(subject);
+    String guess = Greenfoot.ask(question[0]);
+    if (guess.equals(question[1])) {
+        return true;
+    } else {
+        return false;
+    }
+}
         
     
     }

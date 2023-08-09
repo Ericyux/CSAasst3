@@ -28,9 +28,33 @@ public class MyWorld extends World
         int spacingX = 50;
         int spacingY = 40;
                 
+            
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                Alien alien = new Alien();
+                Alien alien;
+                // Randomly decide whether to spawn a special alien or default alien
+                if (Greenfoot.getRandomNumber(4) == 0) {
+                    int alienType = Greenfoot.getRandomNumber(4);
+                    switch (alienType) {
+                        case 0:
+                            alien = new AlgebraAlien();
+                            break;
+                        case 1:
+                            alien = new CalculusAlien();
+                            break;
+                        case 2:
+                            alien = new GeoAlien();
+                            break;
+                        case 3:
+                            alien = new TrigAlien();
+                            break;
+                        default:
+                            alien = new Alien();
+                            break;
+                    }
+                } else {
+                    alien = new Alien();
+                }
                 addObject(alien, spacingX * col + spacingX / 2, spacingY * row + spacingY / 2);
             }
         }

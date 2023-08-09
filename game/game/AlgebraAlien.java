@@ -12,8 +12,9 @@ public class AlgebraAlien extends Alien
      * Act - do whatever the HistoryAlien wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
-        // Add your action code here.
+    public AlgebraAlien() {
+        GreenfootImage algebraImage = new GreenfootImage("algebraAlien.png");
+        algebraImage.scale(algebraImage.getWidth() / 20, algebraImage.getHeight() / 20);
+        setImage(algebraImage);
     }
 }

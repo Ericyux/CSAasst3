@@ -12,8 +12,9 @@ public class CalculusAlien extends Alien
      * Act - do whatever the MathAlien wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
-        // Add your action code here.
+    public CalculusAlien() {
+        GreenfootImage calculusImage = new GreenfootImage("calculusAlien.png");
+        calculusImage.scale(calculusImage.getWidth() / 20, calculusImage.getHeight() / 20);
+        setImage(calculusImage);
     }
 }

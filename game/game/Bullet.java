@@ -28,30 +28,34 @@ public class Bullet extends Actor
         }
     }
     
-    public void checkHit(){
-        if(isTouching(Alien.class)){
-            removeTouching(Alien.class);
-            Spaceship.bullets.remove(this);
-            getWorld().removeObject(this);
-        }
-        else if(isTouching(CalculusAlien.class)){
+public void checkHit() {
+    if (isTouching(Alien.class)) {
+        Alien alien = (Alien) getOneIntersectingObject(Alien.class); //https://www.greenfoot.org/topics/55648/0
+        
+        if (alien instanceof CalculusAlien) {
+            System.out.println("CalculusAlien hit!"); // For Raman: replace the print statements by prompting the user to answer a question
             removeTouching(CalculusAlien.class);
-            getWorld().removeObject(this);
-        }
-        else if(isTouching(DefaultAlien.class)){
-            removeTouching(DefaultAlien.class);
-            getWorld().removeObject(this);
-        }
-        else if(isTouching(GeoAlien.class)){
+        } else if (alien instanceof GeoAlien) {
+            System.out.println("GeoAlien hit!");
             removeTouching(GeoAlien.class);
-            getWorld().removeObject(this);
-        }
-        else if(isTouching(TrigAlien.class)){
+        } else if (alien instanceof TrigAlien) {
+            System.out.println("TrigAlien hit!");
             removeTouching(TrigAlien.class);
-            getWorld().removeObject(this);
+        } else if (alien instanceof AlgebraAlien) {
+            System.out.println("AlgebraAlien hit!");
+            removeTouching(AlgebraAlien.class);
+        } else {
+            System.out.println("Alien hit!");
+            removeTouching(Alien.class);
         }
+        
+        Spaceship.bullets.remove(this);
+        getWorld().removeObject(this);
     }
+}
+
+
         
-        
+    
     }
     

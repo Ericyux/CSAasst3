@@ -38,8 +38,8 @@ public class Alien extends Actor {
     }
 
     private void checkCollisionWithSpaceship() {
-        if (isTouching(Spaceship.class)) {
-            getWorld().showText("Collided with spaceship - game over!", 200, 200);
+        if ((isTouching(Spaceship.class)) && (Spaceship.InvincibilityTimer == 0)) {
+            getWorld().showText("Collided with spaceship \n Game over!", 200, 500);
             Greenfoot.stop(); // End the simulation
         }
     }
